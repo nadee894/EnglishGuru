@@ -1,7 +1,6 @@
 import language_check
 
 
-
 tool = language_check.LanguageTool('en-US')
 text = 'I rea the book '
 matches = tool.check(text)

@@ -31,7 +31,17 @@ class Home extends CI_Controller {
        $this->load->view('home');
 
        //$this->load->view('t');
-        $this->load->view('test');
+        $this->load->view('Home_main');
+
+    }
+
+    public function checkSpell()
+    {
+        $this->load->helper('url');
+       $this->load->view('home');
+
+       $this->load->view('test');
+
 
     }
 

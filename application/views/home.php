@@ -14,7 +14,8 @@
     <!--  <a class="navbar-brand" href="#">WebSiteName</a>1-->
     </div>
     <ul class="nav navbar-nav">
-      <li id="spell" class="active"><a href="<?php echo site_url('home/index')?>">SPELL CHECKER</a></li>
+      <li id="home" class="active"><a href="<?php echo site_url('home/index')?>">Home</a></li>
+      <li id="spell" class=""><a href="<?php echo site_url('home/checkSpell')?>">SPELL CHECKER</a></li>
 
       <li  id="grammar"><a href="<?php echo site_url('home/grammarChecker')?>">GRAMMAR CHECKER</a></li>
       <li><a href="#">TEXT TO SPEECH</a></li>

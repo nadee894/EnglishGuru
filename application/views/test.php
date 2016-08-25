@@ -31,7 +31,7 @@
 
 <div class="container">
 
-    <h3>Type a word to check spelling mistakse</h3>
+    <h3>Type a word to check spelling mistakes</h3>
 
     <form role="form" name="myform" id="myform" action="<?php echo base_url('home/checkSpelling')?>" method="post">
         <div class="form-group">
@@ -43,3 +43,16 @@
             </div>
     </form>
 </div>
+
+<script>
+
+    $(document).ready(function () {
+        $(".nav li").removeClass("active");//this will remove the active class from
+                                           //previously active menu item
+        $('#spell').addClass('active');
+        //for demo
+        //$('#demo').addClass('active');
+        //for sale
+        //$('#sale').addClass('active');
+    });
+</script>
