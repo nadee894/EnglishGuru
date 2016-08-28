@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-
 import string
 
 past_simple_verb = {"do":"did", "have":"had", "is":"was", "am":"was", "are":"were", "write":"wrote"}
@@ -43,19 +41,19 @@ def future_perfect_continuous(s, v, o=""):
 
 
 def is_transitive(verb):
-	if verb in ("bring", "buy", "cost", "get", "give", "leave", "lend", "make", "offer", "owe", "pass", "pay", "play", "promise", "read", "refuse", "send", "show", "sing", "take", "teach", "tell", "write"): 
+	if verb in ("bring", "buy", "cost", "get", "give", "leave", "lend", "make", "offer", "owe", "pass", "pay", "play", "promise", "read", "refuse", "send", "show", "sing", "take", "teach", "tell", "write"):
 		return True
 	else:
 		False
 
 def is_singular(subject): # rewrite it!
-	if subject.lower() in ("i", "you", "he", "she", "it"): 
+	if subject.lower() in ("i", "you", "he", "she", "it"):
 		return True
 	elif subject.lower() in ("we", "they") or subject.endswith("s") or subject.endswith("es"):
 		False
 
 def is_plural(subject): # rewrite it!
-	if subject.lower() in ("i", "you", "he", "she", "it"): 
+	if subject.lower() in ("i", "you", "he", "she", "it"):
 		return True
 	elif subject.lower() in ("we", "they") or subject.endswith("s") or subject.endswith("es"):
 		False
@@ -63,13 +61,13 @@ def is_plural(subject): # rewrite it!
 def get_base_be(subject):
 	if subject.lower() in ("i"):
 		return "am"
-	elif subject.lower() in ("he", "she", "it") or is_singular(subject): 
+	elif subject.lower() in ("he", "she", "it") or is_singular(subject):
 		return "is"
 	elif subject.lower() in ("we", "you", "they") or is_plural(subject):
 		return "are"
 
 def get_past_be(subject):
-	if subject.lower() in ("i", "you", "he", "she", "it") or is_singular(subject): 
+	if subject.lower() in ("i", "you", "he", "she", "it") or is_singular(subject):
 		return "was"
 	elif subject.lower() in ("we", "they") or is_plural(subject):
 		return "were"
@@ -77,7 +75,7 @@ def get_past_be(subject):
 def get_base_have(subject):
 	if subject.lower() in ("i", "we", "you", "they"):
 		return "have"
-	elif subject.lower() in ("he", "she", "it") or is_singular(subject): 
+	elif subject.lower() in ("he", "she", "it") or is_singular(subject):
 		return "has"
 
 def add_suffix(word, suffix):
@@ -129,7 +127,3 @@ def get_present_simple(verb, subject):
 		return add_suffix(verb, "s")
 	else:
 		return verb
-
-def check_tences(text):
-	get_base_have(text)
-

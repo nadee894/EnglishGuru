@@ -13,6 +13,7 @@ from urllib.error import URLError
 import json
 import sys
 import language_check
+import functionsTence
 
 class ColoredText:
     """Colored text class"""
@@ -128,6 +129,8 @@ def main():
         grammarResharper(resharper)
         break;
         if(result["Suggestions"]):
+
+
             from_index = result["From"] + color_gap
             to_index = result["To"] + 1 + color_gap
             suggest = result["Suggestions"][0]["Text"]
@@ -141,6 +144,9 @@ def main():
 
             color_gap += gap
             fixed_gap += to_index-from_index-len(suggest)
+
+            #Check Tences
+            functionsTence.check_tences(result["Suggestions"]);
 
     print ()
     #print("from " + original_text)
