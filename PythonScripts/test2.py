@@ -13,7 +13,7 @@ from urllib.error import URLError
 import json
 import sys
 import language_check
-import functionsTence
+
 
 class ColoredText:
     """Colored text class"""
@@ -104,6 +104,14 @@ def get_ginger_result(text):
         quit()
 
     return(result)
+
+
+#check Spelling Mistakes
+def correct_spelling_mistakes(fixed_text):
+    tool = language_check.LanguageTool('en_US')
+    matches = tool.check(fixed_text)
+    text = language_check.correct(fixed_text, matches)
+    return text
 
 
 def main():

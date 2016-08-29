@@ -83,6 +83,32 @@ class SimplePresent(Simple, Present):
         return "%s %s %s %s?" % (self.Auxiliary.capitalize(), self.Subject, self.Verb, self.Object)
 
 
+# split tenses Mistakes
+def tence_checker(fixed_text):
+    s,v,o=tence_splitter(fixed_text)
+    return s,v,o;
+
+    # split tenses Mistakes
+def tence_splitter(fixed_text):
+    def __init__(self, s, v, o=""):
+        self.Subject = s
+        self.Verb = v
+        self.Object = o
+        self.get_objective()
+        self.get_subjective()
+
+    def get_objective(self):
+        return "%s %s %s" % (self.Subject.capitalize(), self.Verb, self.Object)
+
+    def get_subjective(self):
+        return "%s %s not %s %s" % (self.Subject.capitalize(), self.Auxiliary, self.Verb, self.Object)
+
+    def get_verb(self):
+        return "%s %s %s %s?" % (self.Auxiliary.capitalize(), self.Subject, self.Verb, self.Object)
+
+
+
+
 class SimplePast(Simple, Past):
     def __init__(self, s, v, o=""):
         self.Subject = s
