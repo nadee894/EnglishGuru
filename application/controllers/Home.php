@@ -81,4 +81,28 @@ class Home extends CI_Controller {
        // $this->load->view('grammarChecker');
        // $this->load->view('');
     }
+    public function tts()
+    {    $this->load->helper('url');
+
+
+
+        $this->load->view('home');
+        $this->load->view('tts');
+
+
+       // $this->load->view('grammarChecker');
+       // $this->load->view('');
+    }
+    public function stt()
+    {    $this->load->helper('url');
+
+
+
+        $this->load->view('home');
+        $this->load->view('stt');
+
+
+       // $this->load->view('grammarChecker');
+       // $this->load->view('');
+    }
 }

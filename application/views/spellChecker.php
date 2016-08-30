@@ -7,12 +7,12 @@
  */
 $userInput=$id;
 
-$result = shell_exec('python C:/xampp2/htdocs/EnglishGuru/PythonScripts/spellCheck.py '.$id);
+$result = shell_exec('python C:/Users/Administrator/PycharmProjects/nadeesha/spellCheck.py '.$id);
 ?>
 </br>
 <div class="col-md-12 text-center">
 <div class="col-md-3 text-center"></div>
-<div class="col-md-6 text-center">  
+<div class="col-md-6 text-center">
 
 <?php if($result!=''){?>
 <div class="alert alert-danger">
@@ -26,8 +26,8 @@ $result = shell_exec('python C:/xampp2/htdocs/EnglishGuru/PythonScripts/spellChe
 
 
 <?php if($result!=''){?>
-    <div class="alert alert-danger">
-    
+    <div class="">
+
     </div>
 
     </div>

@@ -18,7 +18,8 @@
       <li id="spell" class=""><a href="<?php echo site_url('home/checkSpell')?>">SPELL CHECKER</a></li>
 
       <li  id="grammar"><a href="<?php echo site_url('home/grammarChecker')?>">GRAMMAR CHECKER</a></li>
-      <li><a href="#">TEXT TO SPEECH</a></li>
+      <li id="tts"><a href="<?php echo site_url('home/tts')?>">TEXT TO SPEECH</a></li>
+      <li id="sst"><a href="<?php echo site_url('home/stt')?>">  SPEECH TO TEXT</a></li>
 
     </ul>
   </div>

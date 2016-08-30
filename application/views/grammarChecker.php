@@ -7,7 +7,7 @@
  */
 $userInput=$id;
 
-$result = shell_exec('python C:/xampp2/htdocs/EnglishGuru/PythonScripts/test2.py '.$userInput);
+$result = shell_exec('python C:/Users/Administrator/PycharmProjects/nadeesha/test2.py '.$userInput);
 
 ?>
 </br>
