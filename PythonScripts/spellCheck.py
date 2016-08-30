@@ -17,13 +17,14 @@ def checkspell():
 
 
 
-    if len(matches) == 0:
-        print("no error")
+    if len(matches) != 0:
 
-    else:
-       for  a in matches:
-           print(a.msg)
-           print(a.replacements)
+        for a in matches:
+            if(a.msg!="This sentence does not start with an uppercase letter"):
+                print(a.msg)
+                print(a.replacements)
+
+
 
 
 
