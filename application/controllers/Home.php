@@ -28,7 +28,7 @@ class Home extends CI_Controller {
     public function index()
     {
         $this->load->helper('url');
-       $this->load->view('home');
+       $this->load->view('header');
 
        //$this->load->view('t');
         $this->load->view('Home_main');
@@ -38,9 +38,9 @@ class Home extends CI_Controller {
     public function checkSpell()
     {
         $this->load->helper('url');
-       $this->load->view('home');
+       $this->load->view('header');
 
-       $this->load->view('test');
+       $this->load->view('spellHome');
 
 
     }
@@ -51,8 +51,8 @@ class Home extends CI_Controller {
         $id = $this->input->post("val1");
 
         $data['id']= $id;
-        $this->load->view('home');
-        $this->load->view('test',$data);
+        $this->load->view('header');
+        $this->load->view('spellHome',$data);
         $this->load->view('spellChecker',$data);
     }
 
@@ -60,7 +60,7 @@ class Home extends CI_Controller {
     {
 
         $this->load->helper('url');
-        $this->load->view('home');
+        $this->load->view('header');
         $this->load->view('grammarHome');
 
        // $this->load->view('grammarChecker');
@@ -74,7 +74,7 @@ class Home extends CI_Controller {
 
         $data['id']= $id;
 
-        $this->load->view('home');
+        $this->load->view('header');
         $this->load->view('grammarHome',$data);
         $this->load->view('grammarChecker',$data);
 
@@ -86,8 +86,8 @@ class Home extends CI_Controller {
 
 
 
-        $this->load->view('home');
-        $this->load->view('tts');
+        $this->load->view('header');
+        $this->load->view('textToSpeech');
 
 
        // $this->load->view('grammarChecker');
@@ -98,8 +98,8 @@ class Home extends CI_Controller {
 
 
 
-        $this->load->view('home');
-        $this->load->view('stt');
+        $this->load->view('header');
+        $this->load->view('speechToText');
 
 
        // $this->load->view('grammarChecker');
