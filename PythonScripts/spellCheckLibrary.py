@@ -4,7 +4,8 @@ import os
 import re
 import socket
 import sys
-
+import nltk
+from nltk.probability import FreqDist
 import re
 from collections import Counter
 import threading
@@ -14,7 +15,7 @@ from collections import OrderedDict
 from functools import total_ordering
 from glob import glob
 from weakref import WeakValueDictionary
-
+import pickle
 try:
     from xml.etree import cElementTree as ElementTree
 except ImportError:
@@ -66,9 +67,8 @@ def get_directory():
                 pass
             else:
                 language_check_dir = get_lt_dir(base_dir)
-            if not language_check_dir:
-                raise PathError("can't find LanguageTool directory in {!r}"
-                                .format(base_dir))
+
+
         cache['language_check_dir'] = language_check_dir
     return language_check_dir
 
@@ -80,6 +80,8 @@ def words(text): return re.findall(r'\w+', text.lower())
 
 
 WORDS = Counter(words(open('big.txt').read()))
+
+
 def P(word, N=sum(WORDS.values())):
     "Probability of `word`."
     return WORDS[word] / N
@@ -92,7 +94,7 @@ def correction(word):
 
 def candidates(word):
     "Generate possible spelling corrections for word."
-    return (known([word]) or known(edits1(word)) or known(edits2(word)) or [word])
+    return (known([word]) or known(edits1(word)) or known(word) or [word])
 
 
 def known(words):
@@ -105,32 +107,43 @@ def edits1(word):
     letters = 'abcdefghijklmnopqrstuvwxyz'
     splits = [(word[:i], word[i:]) for i in range(len(word) + 1)]
     deletes = [L + R[1:] for L, R in splits if R]
-    transposes = [L + R[1] + R[0] + R[2:] for L, R in splits if len(R) > 1]
-    replaces = [L + c + R[1:] for L, R in splits if R for c in letters]
-    inserts = [L + c + R for L, R in splits for c in letters]
-    return set(deletes + transposes + replaces + inserts)
+
+    return set(deletes)
 
 
-def edits2(word):
-    "All edits that are two edits away from `word`."
-class Error(Exception):
-
-    """LanguageTool Error."""
 
 
-class ServerError(Error):
-    pass
 
 
-class JavaError(Error):
-    pass
 
 
-class PathError(Error):
-    pass
+def predict(text):
+    WORDS = Counter((open('training.txt').read()))
+    words = nltk.tokenize.word_tokenize(text)
+    misspell = open("training.txt", "r", encoding='ISO-8859-1').read()
+    word_features = list(words.keys())
+    featuresets = [word_features in misspell]
+    testing_set = featuresets[100:]
+    training_set = featuresets[:100000]
+    classifier = nltk.NaiveBayesClassifier.train(training_set)
+    save_classifier = open("pickled_algos/originalnaivebayes5k.pickle", "wb")
+    pickle.dump(classifier, save_classifier)
+    save_classifier.close()
+
+
+
+def printPredictWord(text):
+    open_file = open("pickled_algos/originalnaivebayes5k.pickle", "rb")
+    classifier = pickle.load(open_file)
+    print(classifier.classify(text))
+    open_file.close()
 
 def check(txt):
     word=edits1(txt)
-    correction(word)
-    candidates(correction)
+    if(correction(word)):
+        print(word)
+
+    else:
+        predict(word)
+        printPredictWord(word)
 
