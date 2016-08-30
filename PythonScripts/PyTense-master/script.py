@@ -2,6 +2,7 @@
 import sys
 import functionsTence
 import  test2
+
 #import classes
 def corerct_tense_grammar(fixed_text, s, v, o):
     functionsTence.present_simple(s, v, o);
@@ -27,7 +28,7 @@ def main():
     else:
         fixed_text = original_text
         spell_text=test2.correct_spelling_mistakes(fixed_text);
-        s,v,o=test2.tence_checker(spell_text)
+        s,v,o=classes.tence_checker(spell_text)
         corerct_tense_grammar(fixed_text,s,v,o)
 
 
