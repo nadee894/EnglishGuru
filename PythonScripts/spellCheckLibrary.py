@@ -89,12 +89,12 @@ def P(word, N=sum(WORDS.values())):
 
 def correction(word):
     "Most probable spelling correction for word."
-    return max(candidates(word), key=P)
+    return candidates(word)
 
 
 def candidates(word):
     "Generate possible spelling corrections for word."
-    return (known([word]) or known(edits1(word)) or known(word) or [word])
+    return (known([word]))
 
 
 def known(words):
@@ -140,7 +140,7 @@ def printPredictWord(text):
 
 def check(txt):
     word=edits1(txt)
-    if(correction(word)):
+    if(correction(word)==word):
         print(word)
 
     else:
