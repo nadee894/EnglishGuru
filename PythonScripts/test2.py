@@ -125,7 +125,7 @@ def main():
 
     # Correct grammar
     if(not results["LightGingerTheTextResult"]):
-        print("Good English :)")
+        #print("Good English :)")
         quit()
 
     # Incorrect grammar

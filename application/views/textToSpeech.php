@@ -3,7 +3,8 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
-
+<script src="<?php echo base_url('speakClient.js')?> "></script>
+<script src="<?php echo base_url('textToSpeachJS/speakWorker.js')?> "></script>
 <div class="jumbotron text-center">
     <h1>Text To Speech (TTS)</h1>
 
@@ -28,49 +29,59 @@
 <!--</div>-->
 
 
-<div class="container">
+<!--<div class="container">-->
+<!---->
+<!--    <h3>Type a sentence</h3>-->
+<!---->
+<!--    <form role="form" name="myform" id="myform" action="#" method="post">-->
+<!--        <div class="form-group">-->
+<!---->
+<!--            <textarea class="form-control" rows="2" name="val1" id="val1" placeholder="type a word...">--><?php //if(isset($id)){echo $id;}?><!--</textarea>-->
+<!--        </div>-->
+<!---->
+<!--        <div class="progress">-->
+<!--            <div class="progress-bar" role="progressbar" aria-valuenow="10"-->
+<!--                 aria-valuemin="0" aria-valuemax="100" style="width:70%">-->
+<!--                <span class="sr-only">70% Complete</span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="player text-center">-->
+<!--            <button type="button" id="button_fbw" class="btn" onclick='buttonRewindPress()'>-->
+<!--                <i class="fa fa-fast-backward"></i>-->
+<!--            </button>-->
+<!---->
+<!--            <button type="button" id="button_bw" class="btn" onclick='buttonBackPress()'>-->
+<!--                <i class="fa fa-backward"></i>-->
+<!--            </button>-->
+<!---->
+<!--            <button type="button" id="button_play" class="btn" onclick='buttonPlayPress()'>-->
+<!--                <i class="fa fa-play"></i>-->
+<!--            </button>-->
+<!---->
+<!--            <button type="button" id="button_stop" class="btn" onclick='buttonStopPress()'>-->
+<!--                <i class="fa fa-stop"></i>-->
+<!--            </button>-->
+<!---->
+<!--            <button type="button" id="button_fw" class="btn" onclick='buttonForwardPress()'>-->
+<!--                <i class="fa fa-forward"></i>-->
+<!--            </button>-->
+<!---->
+<!--            <button type="button" id="button_ffw" class="btn" onclick='buttonFastforwardPress()'>-->
+<!--                <i class="fa fa-fast-forward"></i>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
 
-    <h3>Type a sentence</h3>
 
-    <form role="form" name="myform" id="myform" action="#" method="post">
-        <div class="form-group">
-
-            <textarea class="form-control" rows="2" name="val1" id="val1" placeholder="type a word..."><?php if(isset($id)){echo $id;}?></textarea>
-        </div>
-
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="10"
-                 aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                <span class="sr-only">70% Complete</span>
-            </div>
-        </div>
-        <div class="player text-center">
-            <button type="button" id="button_fbw" class="btn" onclick='buttonRewindPress()'>
-                <i class="fa fa-fast-backward"></i>
-            </button>
-
-            <button type="button" id="button_bw" class="btn" onclick='buttonBackPress()'>
-                <i class="fa fa-backward"></i>
-            </button>
-
-            <button type="button" id="button_play" class="btn" onclick='buttonPlayPress()'>
-                <i class="fa fa-play"></i>
-            </button>
-
-            <button type="button" id="button_stop" class="btn" onclick='buttonStopPress()'>
-                <i class="fa fa-stop"></i>
-            </button>
-
-            <button type="button" id="button_fw" class="btn" onclick='buttonForwardPress()'>
-                <i class="fa fa-forward"></i>
-            </button>
-
-            <button type="button" id="button_ffw" class="btn" onclick='buttonFastforwardPress()'>
-                <i class="fa fa-fast-forward"></i>
-            </button>
-        </div>
-    </form>
-</div>
+<form onsubmit="speak(text.value, { amplitude: amplitude.value, wordgap: workdgap.value, pitch: pitch.value, speed: speed.value }); return false">
+    Text: <input type="text" name="text" size=50 value="Never gonna give, you, up.">
+    Amplitude: <input type="text" name="amplitude" size=5 value="100">
+    Pitch: <input type="text" name="pitch" size=5 value="50">
+    Speed: <input type="text" name="speed" size=5 value="175">
+    Word gap: <input type="text" name="workdgap" size=5 value="0">
+    <input type="submit" value="Go!">
+</form>
 <script>
 
     $(document).ready(function () {

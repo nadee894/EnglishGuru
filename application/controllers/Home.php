@@ -87,7 +87,7 @@ class Home extends CI_Controller {
 
 
         $this->load->view('header');
-        $this->load->view('textToSpeech');
+        $this->load->view('textToSpeachJS/textToSpeach');
 
 
        // $this->load->view('grammarChecker');
